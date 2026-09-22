@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang giới thiệu cá nhân và các sản phẩm học tập về ứng dụng công nghệ số.">
+    <title>Trang giới thiệu cá nhân | Công nghệ số trong học tập</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #17105f;
+            --secondary: #4b3cc4;
+            --accent: #55cbe8;
+            --bg: #eef2ff;
+            --text: #252525;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, #eef2ff, #e0f7fa);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: 0 auto;
+        }
+
+        /* Thanh điều hướng */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #dce4ff;
+            box-shadow: 0 3px 15px rgba(23, 16, 95, 0.08);
+        }
+
+        .nav-inner {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 19px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 999px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            background: #eef2ff;
+        }
+
+        /* Phần giới thiệu */
+        .hero {
+            padding: 70px 0 45px;
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 28px;
+            padding: 48px;
+            box-shadow: 0 12px 35px rgba(23, 16, 95, 0.12);
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 35px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #b7c9ff;
+            border-radius: 999px;
+            color: var(--secondary);
+            background: #f5f7ff;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.08;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            color: #4b4b4b;
+            font-size: 18px;
+            max-width: 720px;
+        }
+
+        .profile-box {
+            background: linear-gradient(145deg, #17105f, #4b3cc4);
+            color: white;
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 10px 28px rgba(75, 60, 196, 0.25);
+        }
+
+        .avatar {
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+            background: rgba(255,255,255,0.16);
+            border: 2px solid rgba(255,255,255,0.5);
+            font-size: 38px;
+        }
+
+        .profile-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .profile-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .profile-list li {
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .profile-list li:last-child {
+            border-bottom: 0;
+        }
+
+        /* Tiêu đề section */
+        .section {
+            padding: 35px 0 65px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #5d5d5d;
+        }
+
+        /* Sản phẩm */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 7px 24px rgba(23, 16, 95, 0.11);
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .product-head {
+            padding: 20px 20px 8px;
+        }
+
+        .product-number {
+            display: inline-block;
+            color: var(--secondary);
+            background: #eef2ff;
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .product-card h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .product-card .description {
+            color: #666;
+            padding: 0 20px 15px;
+        }
+
+        .product-body {
+            padding: 0 20px 22px;
+            flex: 1;
+        }
+
+        .preview {
+            border-radius: 13px;
+            overflow: hidden;
+            background: #f5f7ff;
+            border: 1px solid #e2e7ff;
+        }
+
+        .preview img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .pdf-preview {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            display: block;
+            background: white;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 13px;
+            background: #101010;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            border: 0;
+            border-radius: 10px;
+            padding: 9px 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-light {
+            background: #eef2ff;
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+        }
+
+        /* Thông tin thêm */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.88);
+            padding: 24px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            margin: 10px 0 25px;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.75);
+            border-left: 5px solid var(--secondary);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 15px 40px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                padding: 34px;
+            }
+
+            .products,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-inner {
+                padding: 10px 0;
+                flex-direction: column;
+            }
+
+            .hero {
+                padding-top: 35px;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .pdf-preview {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <a class="logo" href="#trang-chu">MY DIGITAL PORTFOLIO</a>
+            <ul class="nav-links">
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#san-pham">Sản phẩm</a></li>
+                <li><a href="#thong-tin">Thông tin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="trang-chu">
+        <section class="hero" id="gioi-thieu">
+            <div class="container">
+                <div class="hero-card">
+                    <div>
+                        <span class="tag">TRANG GIỚI THIỆU CÁ NHÂN</span>
+                        <h1>Xin chào! Mình là<br>Huỳnh Quang Sáng</h1>
+                        <p>
+                            Đây là trang web giới thiệu cá nhân và trưng bày 3 sản phẩm
+                            đã thực hiện trong chủ đề <strong>Ứng dụng công nghệ số trong học tập</strong>.
+                            Trang được phát triển từ mẫu HTML ban đầu, đồng thời bổ sung
+                            phần thông tin cá nhân và khu vực trình bày sản phẩm.
+                        </p>
+                    </div>
+
+                    <aside class="profile-box">
+                        <div class="avatar">👤</div>
+                        <h2>Thông tin cá nhân</h2>
+                        <ul class="profile-list">
+                            <li><strong>Họ và tên:</strong> Huỳnh Quang Sáng</li>
+                            <li><strong>Lớp:</strong> CT005</li>
+                            <li><strong>Trường:</strong> Đại học Cần Thơ</li>
+                            <li><strong>Sở thích:</strong> Công nghệ, học tập, sáng tạo</li>
+                            <li><strong>Chủ đề:</strong> Công nghệ số trong học tập</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="san-pham">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Ba sản phẩm đã thực hiện</h2>
+                    <p>PDF · PNG · YouTube</p>
+                </div>
+
+                <div class="products">
+                    <!-- Sản phẩm 1: PDF -->
+                    <article class="product-card">
+                        <div class="product-head">
+                            <span class="product-number">SẢN PHẨM 01</span>
+                            <h3>File PDF</h3>
+                        </div>
+                        <p class="description">
+                            Tài liệu “Ứng dụng công nghệ số” trình bày vai trò của công nghệ
+                            trong học tập và khả năng hỗ trợ người học.
+                        </p>
+                        <div class="product-body">
+                            <div class="preview">
+                                <iframe
+                                    class="pdf-preview"
+                                    src="Lab05_Ex1.1.pdf"
+                                    title="Xem sản phẩm PDF">
+                                </iframe>
+                            </div>
+                            <div class="button-row">
+                                <a class="btn btn-primary" href="Lab05_Ex1.1.pdf" target="_blank">
+                                    Mở PDF
+                                </a>
+                                <a class="btn btn-light" href="Lab05_Ex1.1.pdf" download>
+                                    Tải PDF
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sản phẩm 2: PNG -->
+                    <article class="product-card">
+                        <div class="product-head">
+                            <span class="product-number">SẢN PHẨM 02</span>
+                            <h3>File PNG</h3>
+                        </div>
+                        <p class="description">
+                            Infographic về các lợi ích của công nghệ số trong học tập:
+                            tài nguyên học tập, học tập linh hoạt, cá nhân hóa, kết nối
+                            và nâng cao hiệu quả học tập.
+                        </p>
+                        <div class="product-body">
+                            <div class="preview">
+                                <img src="Lab05_Ex2.1.png"
+                                     alt="Infographic Lợi ích của công nghệ số trong học tập">
+                            </div>
+                            <div class="button-row">
+                                <a class="btn btn-primary" href="Lab05_Ex2.1.png" target="_blank">
+                                    Xem ảnh
+                                </a>
+                                <a class="btn btn-light" href="Lab05_Ex2.1.png" download>
+                                    Tải PNG
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sản phẩm 3: YouTube -->
+                    <article class="product-card">
+                        <div class="product-head">
+                            <span class="product-number">SẢN PHẨM 03</span>
+                            <h3>Video YouTube</h3>
+                        </div>
+                        <p class="description">
+                            Video được nhúng trực tiếp từ YouTube để trình bày nội dung
+                            liên quan đến công nghệ số trong học tập.
+                        </p>
+                        <div class="product-body">
+                            <div class="video-wrapper">
+                                <iframe
+                                    src="https://www.youtube.com/embed/55cMEoXfvMk"
+                                    title="Video về công nghệ số trong học tập"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="button-row">
+                                <a class="btn btn-primary"
+                                   href="https://www.youtube.com/watch?v=55cMEoXfvMk"
+                                   target="_blank" rel="noopener">
+                                    Xem trên YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="thong-tin">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Định hướng cá nhân</h2>
+                    <p>Học tập · Sáng tạo · Ứng dụng công nghệ</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 Mục tiêu</h3>
+                        <p>
+                            Chủ động học tập, khai thác công nghệ số và xây dựng các sản phẩm
+                            số có tính thực tiễn.
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💡 Kỹ năng</h3>
+                        <p>
+                            Tìm kiếm thông tin, trình bày nội dung, thiết kế sản phẩm số
+                            và xây dựng trang web HTML/CSS cơ bản.
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🚀 Định hướng</h3>
+                        <p>
+                            Tiếp tục rèn luyện tư duy sáng tạo và khả năng ứng dụng công nghệ
+                            vào học tập và các dự án cá nhân.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <strong>Ghi chú:</strong><br>
+                    Nội dung PDF theo tài liệu đã cung cấp; infographic là sản phẩm PNG đã cung cấp;
+                    video được nhúng từ YouTube. Hãy thay các thông tin <strong>Huỳnh Quang Sáng</strong>,
+                    <strong>Lớp</strong> và <strong>Đại học Cần Thơ</strong> bằng thông tin cá nhân
+                    của bạn trước khi nộp bài.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 · Trang giới thiệu cá nhân · Ứng dụng công nghệ số trong học tập
+    </footer>
+</body>
+</html>
